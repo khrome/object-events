@@ -1,0 +1,34 @@
+{
+    "name": "object-events",
+    "homepage": "https://github.com/khrome/object-events",
+    "version": "0.0.1-alpha",
+    "main": "object-events.js",
+    "description": "Events and more for objects",
+    "keywords": [
+        "object",
+        "async",
+        "events"
+    ],
+    "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
+    "contributors": [],
+    "bugs": {
+        "url": "https://github.com/khrome/object-events/issues"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/khrome/object-events.git"
+    },
+    "dependencies": {
+        "extended-emitter": "*",
+        "async-objects": "*"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "should": "*"
+    },
+    "optionalDependencies": {},
+    "engines": {
+        "node": "*"
+    }
+}
