@@ -75,10 +75,13 @@
         objectField(object, 'emit', function(){
             return events.emit.apply(events, arguments);
         });
+        objectField(object, 'setMaxListeners', function(number){
+            return events.emitter.setMaxListeners(number);
+        });
         return object;
     }
     EventedObject.is = function(obj){
-        return obj['__construct__ '] === EventedObject;
+        return obj && obj['__construct__ '] === EventedObject;
     };
     return EventedObject;
 
