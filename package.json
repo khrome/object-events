@@ -1,7 +1,7 @@
 {
     "name": "object-events",
     "homepage": "https://github.com/khrome/object-events",
-    "version": "0.0.2-alpha",
+    "version": "0.1.0",
     "main": "object-events.js",
     "description": "Events and more for objects",
     "keywords": [

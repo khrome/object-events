@@ -76,7 +76,7 @@
             return events.emit.apply(events, arguments);
         });
         objectField(object, 'setMaxListeners', function(number){
-            return events.emitter.setMaxListeners(number);
+            return events.emitter.setMaxListeners?events.emitter.setMaxListeners(number):undefined;
         });
         return object;
     }
