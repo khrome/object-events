@@ -1,5 +1,9 @@
 object-events.js
-===============
+================
+
+[![NPM version](https://img.shields.io/npm/v/object-events.svg)]()
+[![npm](https://img.shields.io/npm/dt/object-events.svg)]()
+[![Travis](https://img.shields.io/travis/khrome/object-events.svg)]()
 
 Is an Object extension class which adds asynchronous functions to Objects as well as firing events on field change
 
