@@ -1,5 +1,5 @@
 var should = require("should");
-var EventedObject = require('./object-events');
+var EventedObject = require('../src/legacy.cjs');
 
 var poolSize = 2;
 

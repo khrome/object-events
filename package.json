@@ -1,14 +1,70 @@
 {
     "name": "object-events",
     "homepage": "https://github.com/khrome/object-events",
-    "version": "1.0.0",
-    "main": "object-events.js",
+    "version": "2.0.0",
+    "type": "module",
+    "main": "src/index.mjs",
+    "module": "src/index.mjs",
+    "commonjs": "src/legacy.cjs",
+    "exports": {
+        ".": {
+            "import": "./src/index.mjs",
+            "require": "./src/legacy.cjs"
+        },
+        "./package.json": {
+            "import": "./package.json",
+            "require": "./package.json"
+        },
+        "./src/index.mjs": {
+            "import": "./src/index.mjs",
+            "require": "./src/legacy.cjs"
+        },
+        "./dist/index.cjs": {
+            "import": "./src/index.mjs",
+            "require": "./src/legacy.cjs"
+        }
+    },
     "description": "Events and more for objects",
     "keywords": [
         "object",
         "async",
         "events"
     ],
+    "moka": {
+        "firefox": {
+            "engine": "@open-automaton/playwright-mining-engine",
+            "options": {
+                "type": "firefox"
+            }
+        },
+        "chrome": {
+            "engine": "@open-automaton/playwright-mining-engine",
+            "options": {
+                "type": "chromium"
+            }
+        },
+        "safari": {
+            "engine": "@open-automaton/playwright-mining-engine",
+            "options": {
+                "type": "webkit"
+            }
+        },
+        "stub": "node_modules/@open-automaton/moka/src/stub.mjs",
+        "stubs": [
+            "express",
+            "module",
+            "os",
+            "fs",
+            "path"
+        ],
+        "shims": {
+            "chai": "node_modules/chai/chai.js",
+            "browser-or-node": "node_modules/browser-or-node/src/index.js",
+            "@environment-safe/event-emitter": "node_modules/@environment-safe/event-emitter/src/index.mjs",
+            "async-arrays/async-arrays.mjs": "node_modules/async-arrays/async-arrays.mjs",
+            "strangler": "node_modules/strangler/src/index.mjs"
+        }
+    },
     "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
     "contributors": [],
     "bugs": {
@@ -19,15 +75,26 @@
         "type": "git",
         "url": "git://github.com/khrome/object-events.git"
     },
+    "scripts": {
+        "import-test": "moka test/test.mjs",
+        "require-test": "mocha test/test.cjs",
+        "local-server": "open 'http://localhost:8085/' ; npx http-server -p 8085",
+        "headless-browser-test": "npm run headless-chrome-test; npm run headless-firefox-test; npm run headless-safari-test",
+        "headless-chrome-test": "moka --server . --browser chrome test/test.mjs",
+        "headless-firefox-test": "moka --server . --browser firefox test/test.mjs",
+        "headless-safari-test": "moka --server . --browser safari test/test.mjs",
+        "browser-test": "moka --server . --local-browser test/test.mjs"
+    },
     "dependencies": {
-        "extended-emitter": "*",
-        "async-objects": "*"
+        "@environment-safe/event-emitter": "^0.0.1",
+        "async-objects": "^2.0.0"
     },
     "devDependencies": {
+        "@environment-safe/chai": "^0.2.0",
+        "@open-automaton/moka": "^0.5.5",
         "mocha": "*",
         "should": "*"
     },
-    "optionalDependencies": {},
     "engines": {
         "node": "*"
     }

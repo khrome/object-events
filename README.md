@@ -3,11 +3,10 @@ object-events.js
 
 [![NPM version](https://img.shields.io/npm/v/object-events.svg)]()
 [![npm](https://img.shields.io/npm/dt/object-events.svg)]()
-[![Travis](https://img.shields.io/travis/khrome/object-events.svg)]()
 
 Is an Object extension class which adds asynchronous functions to Objects as well as firing events on field change
 
-    var EventedObject = require('array-events');
+    import { EventedObject } from 'object-events';
     var myObject = new EventedObject();
 
 events
@@ -15,7 +14,7 @@ events
 
 *change* : fired any time a field is altered
 
-events
+members
 ------
 
 get : get a value
@@ -29,7 +28,7 @@ set : set a value
 emitter functions
 -----------------
 
-EventedObjects are also [Emitters](http://docs.nodejitsu.com/articles/getting-started/control-flow/what-are-event-emitters) but have an expanded syntax from [extended-emitter](https://github.com/khrome/extended-emitter) and the additional `.when()` call.
+EventedObjects are also [Emitters](http://docs.nodejitsu.com/articles/getting-started/control-flow/what-are-event-emitters) but have an expanded syntax from [@environment-safe/event-emitter](https://github.com/@environment-safe/event-emitter) and the additional `.when()` call.
 
     myObject.on('change', function(event){ });
     myObject.once('change', function(event){ });
@@ -39,7 +38,7 @@ EventedObjects are also [Emitters](http://docs.nodejitsu.com/articles/getting-st
 async functions
 ---------------
 
-forEachEmission : execute serially
+forEach : execute serially
 
     myObject.forEachEmission(function(item, index, done){
         somethingAsynchronous(function(){
@@ -49,7 +48,7 @@ forEachEmission : execute serially
         //we're all done!
     });
     
-forAllEmissions : execute all jobs in parallel
+forAll : execute all jobs in parallel
 
     myObject.forAllEmissions(function(item, index, done){
         somethingAsynchronous(function(){
@@ -59,7 +58,7 @@ forAllEmissions : execute all jobs in parallel
         //we're all done!
     });
     
-forAllEmissionsInPool : execute all jobs in parallel up to a maximum #, then queue for later
+forEachBatch : execute all jobs in parallel up to a maximum #, then queue for later
 
     myObject.forAllEmissionsInPool(poolSize, function(item, index, done){
         somethingAsynchronous(function(){
@@ -88,9 +87,26 @@ EventedObject.is : is the provided object an instance of EventedArray
 
 Testing
 -------
-just run
-    
-    mocha
+
+Run the legacy commonjs test suite
+```bash
+npm run require-test
+```
+Run the es module tests to test the root modules
+```bash
+npm run import-test
+```
+to run the same test inside the browser with graphical results:
+
+```bash
+npm run browser-test
+```
+to run the same test headless in a browser with commandline results:
+```bash
+npm run headless-<browser>-test
+```
+where `<browser>` is one of `firefox`, `safari` or `chrome`
+(add `-- --open --head` to open the browsers process for investigation)
 
 Enjoy,
 
